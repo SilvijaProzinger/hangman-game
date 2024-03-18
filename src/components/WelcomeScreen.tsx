@@ -12,7 +12,6 @@ const WelcomeScreen = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(name);
     dispatch(addName(name));
   };
 

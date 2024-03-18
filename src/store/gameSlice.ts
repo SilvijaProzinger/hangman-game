@@ -26,11 +26,14 @@ const gameSlice = createSlice({
       state.name = action.payload;
     },
     setQuoteToGuess: (state, action: PayloadAction<string>) => {
-      state.quote = action.payload
-    }
+      state.quote = action.payload;
+    },
+    addGuess: (state, action: PayloadAction<string>) => {
+      state.guessedLetters.push(action.payload);
+    },
   },
 });
 
-export const { addName, setQuoteToGuess } = gameSlice.actions;
+export const { addName, setQuoteToGuess, addGuess } = gameSlice.actions;
 
 export default gameSlice.reducer;

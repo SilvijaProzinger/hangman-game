@@ -4,6 +4,7 @@ import { setQuoteToGuess } from "../store/gameSlice";
 import Quote from "./Quote";
 import Header from "./Header";
 import useFetch from "../hooks/useFetch";
+import Keyboard from "./Keyboard";
 
 const Game = () => {
   const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
@@ -23,6 +24,7 @@ const Game = () => {
       <Header />
       <Quote data={data} isLoading={isLoading} error={error} />
       <button onClick={refetch}>Restart the game</button>
+      <Keyboard />
     </>
   );
 };
