@@ -1,15 +1,13 @@
 import { useEffect } from "react";
-import useFetch from "../hooks/useFetch";
+import { QuoteResponse } from "../types/types";
 
-const Quote = () => {
-  const { data, isLoading, error } = useFetch("http://api.quotable.io/random");
+type Props = {
+  data: QuoteResponse | null;
+  isLoading: boolean;
+  error: string | null;
+};
 
-  useEffect(() => {
-    if (data) {
-      console.log(data);
-    }
-  }, [data]);
-
+const Quote = ({ data, isLoading, error }: Props) => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
