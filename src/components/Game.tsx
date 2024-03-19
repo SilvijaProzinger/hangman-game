@@ -20,7 +20,7 @@ const Game = () => {
     (state: RootState) => state.game.guessedLetters
   );
 
-  const isGameWon = charsToGuess.every((letter) => guessedLetters.includes(letter));
+  const isGameWon = charsToGuess.every((letter) => guessedLetters.includes(letter.toLowerCase()));
 
   //set the quote that the player has to guess
   useEffect(() => {
