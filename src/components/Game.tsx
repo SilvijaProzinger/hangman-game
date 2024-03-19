@@ -1,25 +1,50 @@
 import { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setQuoteToGuess, resetGame } from "../store/gameSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setQuoteToGuess, resetGame, finishGame } from "../store/gameSlice";
+import { RootState } from "../store/store";
 import Quote from "./Quote";
 import Header from "./Header";
 import useFetch from "../hooks/useFetch";
 import Keyboard from "./Keyboard";
 import PlayerCurrentScore from "./PlayerCurrentScore";
 
-const Game = () => {
-  const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
+const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 
+const Game = () => {
   const { data, isLoading, error, refetch } = useFetch(quoteUrl);
   const dispatch = useDispatch();
 
+  const charsToGuess = useSelector((state: RootState) => state.game.charsToGuess);
+  const errors = useSelector((state: RootState) => state.game.errors);
+  const guessedLetters = useSelector(
+    (state: RootState) => state.game.guessedLetters
+  );
+
+  const isGameWon = charsToGuess.every((letter) => guessedLetters.includes(letter));
+
+  //set the quote that the player has to guess
   useEffect(() => {
     if (data) {
       console.log(data);
-      const quoteToGuess = data.content.replace(/[^a-zA-Z\s]/g, ""); //set state so that the user doesn't have to guess special characters
-      dispatch(setQuoteToGuess(quoteToGuess));
+
+      //trim empty spaces and special characters from quote that the player has to guess
+      const quoteCharsOnly = data.content
+        .replace(/[^a-zA-Z\s]/g, "")
+        .replace(/ /g, "")
+        .split("");
+      dispatch(setQuoteToGuess(quoteCharsOnly));
     }
   }, [data, dispatch]);
+
+  //check if the game is won or lost
+  useEffect(() => {
+    console.log(isGameWon)
+    if (errors >= 7 || isGameWon) {
+      const result = isGameWon ? "won" : "lost";
+      dispatch(finishGame(result));
+      console.log(result);
+    }
+  }, [dispatch, errors, isGameWon]);
 
   const handleReset = () => {
     refetch();
