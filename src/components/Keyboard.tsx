@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { addGuess } from "../store/gameSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import React, { useEffect } from "react";
 
 const Keyboard = () => {
   const dispatch = useDispatch();
@@ -12,14 +11,8 @@ const Keyboard = () => {
   );
 
   const handleGuess = (guess: string) => {
-    if (!guessedLetters.includes(guess)) {
-      dispatch(addGuess(guess));
-    } 
+    dispatch(addGuess(guess));
   };
-
-  useEffect(() => {
-    console.log(guessedLetters)
-  },[guessedLetters])
 
   return (
     <div>
