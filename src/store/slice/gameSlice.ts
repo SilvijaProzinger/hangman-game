@@ -7,7 +7,8 @@ interface gameState {
   guessedLetters: string[];
   errors: number;
   score: number;
-  outcome: string;
+  status: string;
+  finalTime: number;
 }
 
 const initialState: gameState = {
@@ -17,17 +18,19 @@ const initialState: gameState = {
   guessedLetters: [],
   errors: 0,
   score: 0,
-  outcome: "ongoing",
+  status: "start",
+  finalTime: 0,
 };
 
 const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    resetGame: (state) => {
+    resetGame: (state, action: PayloadAction<string>) => {
       state.guessedLetters = initialState.guessedLetters;
       state.errors = initialState.errors;
-      state.outcome = initialState.outcome;
+      state.status = action.payload;
+      state.finalTime = initialState.finalTime;
     },
     addName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
@@ -46,8 +49,11 @@ const gameSlice = createSlice({
       }
     },
     finishGame: (state, action: PayloadAction<string>) => {
-      state.outcome = action.payload;
+      state.status = action.payload;
     },
+    setFinalTime: (state, action: PayloadAction<number>) => {
+      state.finalTime = action.payload
+    }
   },
 });
 
@@ -57,6 +63,7 @@ export const {
   setQuoteToGuess,
   addGuess,
   finishGame,
+  setFinalTime,
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

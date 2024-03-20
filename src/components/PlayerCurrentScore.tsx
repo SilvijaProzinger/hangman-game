@@ -1,12 +1,11 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import PlayerCurrentError from "./PlayerCurrentErrrors";
+import PlayerCurrentTime from "./PlayerCurrentTime";
 
 const PlayerCurrentScore = () => {
-  const errors = useSelector((state: RootState) => state.game.errors);
   return (
     <div>
-      <p>Errors: {errors}/7 </p>
-      <p>Time:</p>
+      <PlayerCurrentError />
+      <PlayerCurrentTime />
     </div>
   );
 };

@@ -6,7 +6,8 @@ export const store = configureStore({
   reducer: {
     game: gameReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(gameStatusMiddleware.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(gameStatusMiddleware.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

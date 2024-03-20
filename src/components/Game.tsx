@@ -13,8 +13,8 @@ const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 const Game = () => {
   const { data, isLoading, error, refetch } = useFetch(quoteUrl);
   const dispatch = useDispatch();
-  const outcome = useSelector(
-    (state: RootState) => state.game.outcome
+  const status = useSelector(
+    (state: RootState) => state.game.status
   )
 
   /*const charsToGuess = useSelector((state: RootState) => state.game.charsToGuess);
@@ -50,12 +50,12 @@ const Game = () => {
   }, [dispatch, errors, isGameWon]);*/
 
   useEffect(() => {
-    console.log(outcome)
-  },[outcome])
+    console.log(status)
+  },[status])
 
   const handleReset = () => {
     refetch();
-    dispatch(resetGame());
+    dispatch(resetGame('restart'));
   };
 
   return (
