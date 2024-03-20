@@ -22,17 +22,17 @@ const Game = () => {
 
   const isGameWon = charsToGuess.every((letter) => guessedLetters.includes(letter.toLowerCase()));
 
-  //set the quote that the player has to guess
+  //save fetched quote to state
   useEffect(() => {
     if (data) {
       console.log(data);
 
-      //trim empty spaces and special characters from quote that the player has to guess
-      const quoteCharsOnly = data.content
+      //trim empty spaces and special characters from quote 
+      const quoteLettersOnly = data.content
         .replace(/[^a-zA-Z\s]/g, "")
         .replace(/ /g, "")
         .split("");
-      dispatch(setQuoteToGuess(quoteCharsOnly));
+      dispatch(setQuoteToGuess(quoteLettersOnly));
     }
   }, [data, dispatch]);
 

@@ -26,13 +26,19 @@ const Quote = ({ data, isLoading, error }: Props) => {
     <>
       {data && (
         <div>
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: 'flex-end'}}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "flex-end",
+            }}
+          >
             {data.content.split("").map((letter, index) => {
-              const isNotSpecialChar = /[a-zA-Z]/.test(letter);
+              const isLetter = /[a-zA-Z]/.test(letter); //check if character is letter so it can be hidden
               return (
                 <span
                   style={{
-                    borderBottom: isNotSpecialChar ? "2px solid black" : "none",
+                    borderBottom: isLetter ? "2px solid black" : "none",
                     marginLeft: "3px",
                     display: "flex",
                     width: "15px",
@@ -40,7 +46,7 @@ const Quote = ({ data, isLoading, error }: Props) => {
                   }}
                   key={index}
                 >
-                  {isNotSpecialChar ? (
+                  {isLetter ? (
                     <span
                       style={{
                         display: guessedLetters.includes(letter.toLowerCase())
@@ -49,7 +55,7 @@ const Quote = ({ data, isLoading, error }: Props) => {
                         margin: "0 auto",
                       }}
                     >
-                      {letter.toUpperCase()} 
+                      {letter.toUpperCase()}
                     </span>
                   ) : (
                     letter

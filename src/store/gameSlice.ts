@@ -34,7 +34,7 @@ const gameSlice = createSlice({
     },
     setQuoteToGuess: (state, action: PayloadAction<string[]>) => {
       state.quote = action.payload;
-      //save only unique characters to state so that the player doesn't have to guess duplicates
+      //save only unique characters to the state so that the player doesn't have to guess duplicates
       state.charsToGuess = state.quote.filter(
         (letter, index) => state.quote.indexOf(letter) === index
       );
