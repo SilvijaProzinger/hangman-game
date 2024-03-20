@@ -1,6 +1,6 @@
 import { keys } from "../constants/keys";
 import { useDispatch } from "react-redux";
-import { addGuess } from "../store/gameSlice";
+import { addGuess } from "../store/slice/gameSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 

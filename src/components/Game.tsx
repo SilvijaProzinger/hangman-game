@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setQuoteToGuess, resetGame, finishGame } from "../store/gameSlice";
+import { setQuoteToGuess, resetGame, finishGame } from "../store/slice/gameSlice";
 import { RootState } from "../store/store";
 import Quote from "./Quote";
 import Header from "./Header";
@@ -13,14 +13,17 @@ const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 const Game = () => {
   const { data, isLoading, error, refetch } = useFetch(quoteUrl);
   const dispatch = useDispatch();
+  const outcome = useSelector(
+    (state: RootState) => state.game.outcome
+  )
 
-  const charsToGuess = useSelector((state: RootState) => state.game.charsToGuess);
+  /*const charsToGuess = useSelector((state: RootState) => state.game.charsToGuess);
   const errors = useSelector((state: RootState) => state.game.errors);
   const guessedLetters = useSelector(
     (state: RootState) => state.game.guessedLetters
   );
 
-  const isGameWon = charsToGuess.every((letter) => guessedLetters.includes(letter.toLowerCase()));
+  //const isGameWon = charsToGuess.every((letter) => guessedLetters.includes(letter.toLowerCase()));*/
 
   //save fetched quote to state
   useEffect(() => {
@@ -37,14 +40,18 @@ const Game = () => {
   }, [data, dispatch]);
 
   //check if the game is won or lost
-  useEffect(() => {
+  /*useEffect(() => {
     console.log(isGameWon)
     if (errors >= 7 || isGameWon) {
       const result = isGameWon ? "won" : "lost";
       dispatch(finishGame(result));
       console.log(result);
     }
-  }, [dispatch, errors, isGameWon]);
+  }, [dispatch, errors, isGameWon]);*/
+
+  useEffect(() => {
+    console.log(outcome)
+  },[outcome])
 
   const handleReset = () => {
     refetch();

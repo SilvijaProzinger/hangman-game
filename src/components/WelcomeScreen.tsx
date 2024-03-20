@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addName } from "../store/gameSlice";
+import { addName } from "../store/slice/gameSlice";
 
 const WelcomeScreen = () => {
   const [name, setName] = useState("");
