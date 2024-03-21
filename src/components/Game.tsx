@@ -1,17 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setQuoteToGuess, resetGame, finishGame } from "../store/slice/gameSlice";
+import { setQuoteToGuess, resetGame } from "../store/slice/gameSlice";
 import { RootState } from "../store/store";
 import Quote from "./Quote";
 import Header from "./Header";
 import useFetch from "../hooks/useFetch";
 import Keyboard from "./Keyboard";
-import PlayerCurrentScore from "./PlayerCurrentScore";
+import PlayerCurrentScore from "./PlayerCurrentStatus";
+import { QuoteResponse } from "../types/types";
 
 const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 
 const Game = () => {
-  const { data, isLoading, error, refetch } = useFetch(quoteUrl);
+  const { data, isLoading, error, refetch } = useFetch(quoteUrl) 
   const dispatch = useDispatch();
   const status = useSelector(
     (state: RootState) => state.game.status
@@ -31,7 +32,7 @@ const Game = () => {
       console.log(data);
 
       //trim empty spaces and special characters from quote 
-      const quoteLettersOnly = data.content
+      const quoteLettersOnly = (data as QuoteResponse).content 
         .replace(/[^a-zA-Z\s]/g, "")
         .replace(/ /g, "")
         .split("");
@@ -61,7 +62,7 @@ const Game = () => {
   return (
     <>
       <Header />
-      <Quote data={data} isLoading={isLoading} error={error} />
+      <Quote data={data as QuoteResponse} isLoading={isLoading} error={error} />
       <PlayerCurrentScore />
       <button onClick={handleReset}>Restart the game</button>
       <Keyboard />

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import axios from "axios";
-import { QuoteResponse } from "../types/types";
+import { Response } from "../types/types";
 
 const useFetch = (url: string) => {
-  const [data, setData] = useState<QuoteResponse | null>(null);
+  const [data, setData] = useState<Response | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const isInitalized = useRef(false);
