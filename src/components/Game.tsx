@@ -1,19 +1,21 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuoteToGuess, resetGame } from "../store/slice/gameSlice";
-import { RootState } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 import Quote from "./Quote";
 import Header from "./Header";
 import useFetch from "../hooks/useFetch";
 import Keyboard from "./Keyboard";
 import PlayerCurrentScore from "./PlayerCurrentStatus";
 import { QuoteResponse } from "../types/types";
+import { sendScore } from "../store/thunk/sendScore";
+import { calculateScore } from "../utilities/calculateScore";
 
 const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 
 const Game = () => {
   const { data, isLoading, error, refetch } = useFetch(quoteUrl) 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const status = useSelector(
     (state: RootState) => state.game.status
   )
@@ -39,6 +41,12 @@ const Game = () => {
       dispatch(setQuoteToGuess(quoteLettersOnly));
     }
   }, [data, dispatch]);
+
+  useEffect(() => {
+    if (status === 'won'){
+      dispatch(sendScore())
+    }
+  },[status, dispatch])
 
   //check if the game is won or lost
   /*useEffect(() => {

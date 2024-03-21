@@ -9,3 +9,12 @@ export type HighScoreTableResponse = {
 }
 
 export type Response = QuoteResponse | HighScoreTableResponse
+
+export type GamePostData = {
+  quoteId: number; 
+  length: number;
+  uniqueCharacters: number;
+  userName: string;
+  errors: number;
+  duration: number;
+}
