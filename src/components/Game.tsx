@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setQuoteToGuess, resetGame } from "../store/slice/gameSlice";
+import {
+  setQuoteToGuess,
+  resetGame,
+  setQuoteId,
+} from "../store/slice/gameSlice";
 import { AppDispatch, RootState } from "../store/store";
 import Quote from "./Quote";
 import Header from "./Header";
@@ -10,15 +14,14 @@ import PlayerCurrentScore from "./PlayerCurrentStatus";
 import { QuoteResponse } from "../types/types";
 import { sendScore } from "../store/thunk/sendScore";
 import { calculateScore } from "../utilities/calculateScore";
+import { HangmanDrawing } from "./HangmanDrawing";
 
 const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 
 const Game = () => {
-  const { data, isLoading, error, refetch } = useFetch(quoteUrl) 
+  const { data, isLoading, error, refetch } = useFetch(quoteUrl);
   const dispatch = useDispatch<AppDispatch>();
-  const status = useSelector(
-    (state: RootState) => state.game.status
-  )
+  const status = useSelector((state: RootState) => state.game.status);
 
   /*const charsToGuess = useSelector((state: RootState) => state.game.charsToGuess);
   const errors = useSelector((state: RootState) => state.game.errors);
@@ -31,22 +34,23 @@ const Game = () => {
   //save fetched quote to state
   useEffect(() => {
     if (data) {
-      console.log(data);
+      console.log("DATA", data);
 
-      //trim empty spaces and special characters from quote 
-      const quoteLettersOnly = (data as QuoteResponse).content 
+      //trim empty spaces and special characters from quote
+      const quoteLettersOnly = (data as QuoteResponse).content
         .replace(/[^a-zA-Z\s]/g, "")
         .replace(/ /g, "")
         .split("");
       dispatch(setQuoteToGuess(quoteLettersOnly));
+      dispatch(setQuoteId((data as QuoteResponse)._id));
     }
   }, [data, dispatch]);
 
   useEffect(() => {
-    if (status === 'won'){
-      dispatch(sendScore())
+    if (status === "won") {
+      dispatch(sendScore());
     }
-  },[status, dispatch])
+  }, [status, dispatch]);
 
   //check if the game is won or lost
   /*useEffect(() => {
@@ -58,22 +62,25 @@ const Game = () => {
     }
   }, [dispatch, errors, isGameWon]);*/
 
-  useEffect(() => {
-    console.log(status)
-  },[status])
-
   const handleReset = () => {
     refetch();
-    dispatch(resetGame('restart'));
+    dispatch(resetGame("restart"));
   };
 
   return (
     <>
       <Header />
-      <Quote data={data as QuoteResponse} isLoading={isLoading} error={error} />
-      <PlayerCurrentScore />
-      <button onClick={handleReset}>Restart the game</button>
-      <Keyboard />
+      <div>
+        <HangmanDrawing />
+        <Quote
+          data={data as QuoteResponse}
+          isLoading={isLoading}
+          error={error}
+        />
+        <PlayerCurrentScore />
+        <button onClick={handleReset}>Restart the game</button>
+        <Keyboard />
+      </div>
     </>
   );
 };

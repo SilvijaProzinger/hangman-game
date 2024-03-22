@@ -3,6 +3,7 @@ import { sendScore } from "../thunk/sendScore";
 
 interface gameState {
   name: string;
+  quoteId: string;
   quote: string[];
   charsToGuess: string[];
   guessedLetters: string[];
@@ -16,6 +17,7 @@ interface gameState {
 
 const initialState: gameState = {
   name: "",
+  quoteId: '',
   quote: [],
   charsToGuess: [],
   guessedLetters: [],
@@ -48,6 +50,9 @@ const gameSlice = createSlice({
         (letter, index) => state.quote.indexOf(letter.toLowerCase()) === index
       );
     },
+    setQuoteId: (state, action: PayloadAction<string>) => {
+      state.quoteId = action.payload;
+    },
     addGuess: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
       if (!state.quote.includes(action.payload)) {
@@ -78,6 +83,7 @@ export const {
   resetGame,
   addName,
   setQuoteToGuess,
+  setQuoteId,
   addGuess,
   finishGame,
   setFinalTime,

@@ -21,12 +21,11 @@ export const calculateScore = (
   score = Math.max(0, score);
 
   return score;*/
-  console.log(l,u,e,t)
 
   let baseScore = 100 / (1 + e);
 
-  const quoteLengthBonus = l * 15;
-  const uniqueLettersBonus = u * 10;
+  const quoteLengthBonus = l * 10;
+  const uniqueLettersBonus = u * 5;
   const solvingTimePenalty = (t / 1000) * 1;
 
   let finalScore =

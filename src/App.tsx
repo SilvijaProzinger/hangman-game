@@ -4,6 +4,7 @@ import WelcomeScreen from "./components/WelcomeScreen";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { useEffect } from "react";
+import HighScoreTable from "./components/HighScoreTable";
 
 function App() {
   const name = useSelector((state: RootState) => state.game.name);
@@ -13,7 +14,7 @@ function App() {
     console.log(state)
   },[state])
 
-  return <>{name ? <Game /> : <WelcomeScreen />}</>;
+  return <>{name ? <Game /> : <HighScoreTable />}</>;
 }
 
 export default App;

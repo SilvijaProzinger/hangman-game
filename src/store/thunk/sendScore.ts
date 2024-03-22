@@ -15,6 +15,7 @@ export const sendScore = createAsyncThunk(
       // call the helper function to calculate the score
       const {
         quote,
+        quoteId,
         charsToGuess,
         name,
         errors,
@@ -27,19 +28,25 @@ export const sendScore = createAsyncThunk(
         finalTime
       );
       console.log("FINAL SCORE", score);
+      console.log(highscoreUrl)
       dispatch(setFinalScore(score));
 
       // prepare data for POST request
       const postData: GamePostData = {
-        quoteId: 123, //to add
+        quoteId,
         length: quote.length,
         uniqueCharacters: charsToGuess.length,
         userName: name,
-        errors: errors,
+        errors,
         duration: finalTime,
       };
 
-      const response = await axios.post(highscoreUrl, postData);
+      const response = await axios.post(highscoreUrl, postData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      
       console.log(response);
       return response.data;
     } catch (error) {
