@@ -74,7 +74,7 @@ const RIGHT_LEG = (
 );
 
 const LEFT_LEG = (
-  <div 
+  <div
     style={{
       width: "100px",
       height: "10px",
@@ -90,13 +90,11 @@ const LEFT_LEG = (
 
 const drawing = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG];
 
-export function HangmanDrawing() {
-  const errors = useSelector(
-    (state: RootState) => state.game.errors
-  );
+const HangmanDrawing = () => {
+  const errors = useSelector((state: RootState) => state.game.errors);
 
   return (
-    <div style={{ position: "relative", maxWidth: '330px' }}>
+    <div style={{ position: "relative", maxWidth: "330px" }}>
       {drawing.slice(0, errors)}
       <div
         style={{
@@ -127,4 +125,6 @@ export function HangmanDrawing() {
       <div style={{ height: "10px", width: "250px", background: "black" }} />
     </div>
   );
-}
+};
+
+export default HangmanDrawing;

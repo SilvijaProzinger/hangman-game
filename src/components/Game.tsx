@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setQuoteToGuess,
@@ -6,15 +6,14 @@ import {
   setQuoteId,
 } from "../store/slice/gameSlice";
 import { AppDispatch, RootState } from "../store/store";
-import Quote from "./Quote";
-import Header from "./Header";
 import useFetch from "../hooks/useFetch";
-import Keyboard from "./Keyboard";
-import PlayerCurrentScore from "./PlayerCurrentStatus";
 import { QuoteResponse } from "../types/types";
 import { sendScore } from "../store/thunk/sendScore";
-import { calculateScore } from "../utilities/calculateScore";
-import { HangmanDrawing } from "./HangmanDrawing";
+import Quote from "./Quote";
+import Header from "./Header";
+import Keyboard from "./Keyboard";
+import PlayerStatus from "./PlayerStatus";
+import HangmanDrawing from "./HangmanDrawing";
 
 const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 
@@ -77,7 +76,7 @@ const Game = () => {
           isLoading={isLoading}
           error={error}
         />
-        <PlayerCurrentScore />
+        <PlayerStatus />
         <button onClick={handleReset}>Restart the game</button>
         <Keyboard />
       </div>

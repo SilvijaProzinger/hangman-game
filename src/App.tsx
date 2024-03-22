@@ -1,4 +1,5 @@
 import "./App.css";
+import './styles/colors.module.css';
 import {
   BrowserRouter as Router,
   Route,
@@ -21,7 +22,7 @@ function App() {
   }, [state]);
 
   return (
-    <div>
+    <div className="app-container">
       <Router>
         <Routes>
           <Route

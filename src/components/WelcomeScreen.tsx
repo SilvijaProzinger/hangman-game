@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addName } from "../store/slice/gameSlice";
+import styles from '../styles/WelcomeScreen.module.css'
 
 const WelcomeScreen = () => {
   const [name, setName] = useState("");

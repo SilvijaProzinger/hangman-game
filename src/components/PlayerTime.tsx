@@ -5,7 +5,7 @@ import { formatTime } from "../utilities/timeFormatter";
 import { useDispatch } from "react-redux";
 import { setFinalTime } from "../store/slice/gameSlice";
 
-const PlayerCurrentTime = () => {
+const PlayerTime = () => {
   const dispatch = useDispatch();
   const status = useSelector((state: RootState) => state.game.status);
 
@@ -40,4 +40,4 @@ const PlayerCurrentTime = () => {
   return <p>Time: {formatTime(currentTime)} </p>;
 };
 
-export default PlayerCurrentTime;
+export default PlayerTime;
