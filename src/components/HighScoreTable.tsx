@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/store";
 import { AppDispatch } from "../store/store";
@@ -19,9 +19,9 @@ const HighScoreTable = () => {
     CalculatedHighScoreTable[]
   >([]);
 
-  useEffect(() => {
+  const highscoreDataWithCalculatedScore = useMemo(() => {
     if (data) {
-      const highscoreDataWithCalculatedScore = (data as HighScoreTableResponse).map(
+      const calculatedFinalScore = (data as HighScoreTableResponse).map(
         (player) => {
           const { length, uniqueCharacters, errors, duration } = player;
           const finalScore = calculateScore(
@@ -37,12 +37,16 @@ const HighScoreTable = () => {
           };
         }
       );
-      const sortedHighScoreTable = [...highscoreDataWithCalculatedScore].sort(
-        (a, b) => b.finalScore - a.finalScore
-      );
-      setSortedHighscore(sortedHighScoreTable);
-    }
+      return calculatedFinalScore;
+    } else return [];
   }, [data]);
+
+  useEffect(() => {
+    const sortedHighScoreTable = [...highscoreDataWithCalculatedScore].sort(
+      (a, b) => b.finalScore - a.finalScore
+    );
+    setSortedHighscore(sortedHighScoreTable);
+  }, [highscoreDataWithCalculatedScore]);
 
   if (isLoading) {
     return <div>Loading...</div>;
