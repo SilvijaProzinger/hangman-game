@@ -1,0 +1,6 @@
+.container {
+  background: url("../../public/hangmanBg.png");
+  background-size: cover;
+  position: relative;
+  max-width: 330px;
+}

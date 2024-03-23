@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addName } from "../store/slice/gameSlice";
-import styles from '../styles/WelcomeScreen.module.css'
+import styles from "../styles/WelcomeScreen.module.css";
 
 const WelcomeScreen = () => {
   const [name, setName] = useState("");
@@ -17,20 +17,30 @@ const WelcomeScreen = () => {
   };
 
   return (
-    <div>
-      <h1>Hang the wise man</h1>
-      <p>
-        Welcome to Hang the wise man game! Please enter your name to continue
-      </p>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your name here"
-          value={name}
-          onChange={handleInput}
+    <div className={styles.container}>
+      <div className={styles.form__container}>
+        <h1>Hang the wise man</h1>
+        <p>
+          Welcome to Hang the wise man game! Please enter your name to continue
+        </p>
+        <form onSubmit={handleSubmit} className={styles.name__form}>
+          <input
+            type="text"
+            placeholder="Enter your name here"
+            value={name}
+            onChange={handleInput}
+          />
+          <button type="submit">Submit your name</button>
+        </form>
+      </div>
+      <div className={styles.img__container}>
+        <img
+          src="./hangman.jpg"
+          alt=""
+          width={250}
+          className={styles.hangman__vector}
         />
-        <button type="submit">Submit your name</button>
-      </form>
+      </div>
     </div>
   );
 };

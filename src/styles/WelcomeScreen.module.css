@@ -1,0 +1,67 @@
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img__container {
+  background: url("../../public/hangmanBg.png");
+  background-size: cover;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 93%;
+  height: 450px;
+}
+
+.name__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+
+  & input {
+    margin-bottom: 10px;
+  }
+}
+
+.hangman__vector {
+  mix-blend-mode: multiply;
+}
+
+@media (min-width: 35rem) {
+  .name__form {
+    flex-direction: row;
+
+    & input {
+      margin-right: 5px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (min-width: 64rem) {
+  .container {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .form__container {
+    margin-right: 2rem;
+  }
+
+  .name__form {
+    justify-content: flex-start;
+  }
+
+  .img__container {
+    padding: 30px;
+    height: 350px;
+    width: 550px;
+  }
+}
+
+@media only (min-width: );

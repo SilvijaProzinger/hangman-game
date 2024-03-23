@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import styles from '../styles/HangmanDrawing.module.css'
 
 const HEAD = (
   <div
@@ -94,7 +95,7 @@ const HangmanDrawing = () => {
   const errors = useSelector((state: RootState) => state.game.errors);
 
   return (
-    <div style={{ position: "relative", maxWidth: "330px" }}>
+    <div className={styles.container}>
       {drawing.slice(0, errors)}
       <div
         style={{
