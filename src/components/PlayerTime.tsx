@@ -37,7 +37,7 @@ const PlayerTime = () => {
     if (status === "restart") resetTime();
   }, [status]);
 
-  return <p>Time: {formatTime(currentTime)} </p>;
+  return <p><strong>Time:</strong> {formatTime(currentTime)} </p>;
 };
 
 export default PlayerTime;

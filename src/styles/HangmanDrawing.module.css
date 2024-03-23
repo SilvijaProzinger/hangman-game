@@ -2,5 +2,32 @@
   background: url("../../public/hangmanBg.png");
   background-size: cover;
   position: relative;
-  max-width: 330px;
+  max-width: 580px;
+  height: 400px;
+  margin: 0.5rem 2rem 0.5rem 0;
+  flex-basis: 100%;
+  padding: 40px;
+}
+
+.hangman {
+  position: relative;
+  right: 180px;
+}
+
+@media (min-width: 48rem) {
+  .container {
+    flex-grow: 1;
+    flex-basis: 70%;
+  }
+}
+
+@media (max-width: 56rem) {
+  .container {
+    height: 400px;
+    max-width: 440px;
+  }
+
+  .hangman {
+    right: 50px;
+  }
 }

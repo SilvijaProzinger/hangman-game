@@ -1,0 +1,25 @@
+.container {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.container > p {
+  padding: 0 1rem 0 0;
+}
+
+.container > p:last-child {
+  padding: 0;
+}
+
+@media (min-width: 48rem) {
+  .container {
+    display: block;
+  }
+
+  .container > p {
+    padding: 0;
+  }
+}

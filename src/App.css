@@ -59,6 +59,19 @@ input {
     outline-color: var(--accent-400);
   }
 }
+
+a {
+  color: var(--accent-400);
+
+  &:hover {
+    color: var(--accent-300);
+  }
+
+  &:visited {
+    color: var(--accent-400);
+  }
+}
+
 /*.App {
   text-align: center;
 }

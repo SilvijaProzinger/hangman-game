@@ -1,4 +1,25 @@
 .game__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
 
+.game__container > div {
+  box-sizing: border-box;
+}
 
+.game__container > div:nth-child(2) {
+  order: 3;
+  flex-basis: 100%;
+}
+
+@media (min-width: 48rem) {
+  .game__container {
+    text-align: left;
+  }
+  .game__container > div:nth-child(2) {
+    order: initial;
+    flex-basis: 30%;
+  }
 }

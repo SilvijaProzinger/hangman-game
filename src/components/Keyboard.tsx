@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addGuess } from "../store/slice/gameSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import styles from '../styles/Keyboard.module.css'
 
 const Keyboard = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const Keyboard = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {keys.map((key) => {
         return (
           <button

@@ -31,5 +31,5 @@ export const calculateScore = (
   let finalScore =
     baseScore + quoteLengthBonus + uniqueLettersBonus - solvingTimePenalty;
 
-  return Math.max(0, finalScore);
+  return Math.max(0, Math.round(finalScore));
 };

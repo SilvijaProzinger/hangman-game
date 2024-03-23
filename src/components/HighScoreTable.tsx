@@ -1,7 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../store/store";
-import { AppDispatch } from "../store/store";
 import useFetch from "../hooks/useFetch";
 import { calculateScore } from "../utilities/calculateScore";
 import { formatTime } from "../utilities/timeFormatter";
@@ -9,6 +6,7 @@ import {
   HighScoreTableResponse,
   CalculatedHighScoreTable,
 } from "../types/types";
+import styles from '../styles/HighScoreTable.module.css'
 
 const highscoreUrl = process.env.REACT_APP_HIGHSCORE_API_URL ?? "";
 
@@ -57,7 +55,7 @@ const HighScoreTable = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Highscore table</h1>
       <p>See other players' highscores.</p>
       <table>

@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import { QuoteResponse } from "../types/types";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import styles from '../styles/Quote.module.css'
 
 type Props = {
   data: QuoteResponse | null;
@@ -25,7 +25,7 @@ const Quote = ({ data, isLoading, error }: Props) => {
   return (
     <>
       {data && (
-        <div>
+        <div className={styles.container}>
           <div
             style={{
               display: "flex",

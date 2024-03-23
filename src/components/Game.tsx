@@ -14,7 +14,7 @@ import Header from "./Header";
 import Keyboard from "./Keyboard";
 import PlayerStatus from "./PlayerStatus";
 import HangmanDrawing from "./HangmanDrawing";
-import styles from '../styles/Game.module.css';
+import styles from "../styles/Game.module.css";
 
 const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 
@@ -70,15 +70,17 @@ const Game = () => {
   return (
     <div>
       <Header />
-      <div>
+      <div className={styles.game__container}>
         <HangmanDrawing />
+        <div>
+          <PlayerStatus />
+          <button onClick={handleReset}>Restart the game</button>
+        </div>
         <Quote
           data={data as QuoteResponse}
           isLoading={isLoading}
           error={error}
         />
-        <PlayerStatus />
-        <button onClick={handleReset}>Restart the game</button>
         <Keyboard />
       </div>
     </div>
