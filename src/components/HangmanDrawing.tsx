@@ -9,31 +9,9 @@ const HangmanDrawing = () => {
   return (
     <div className={styles.container}>
       <div className={styles.hangman}>{drawing.slice(0, errors)}</div>
-      <div
-        style={{
-          height: "50px",
-          width: "10px",
-          background: "black",
-          position: "absolute",
-          right: '220px',
-        }}
-      />
-      <div
-        style={{
-          height: "10px",
-          width: "200px",
-          background: "black",
-          marginLeft: "120px",
-        }}
-      />
-      <div
-        style={{
-          height: "220px",
-          width: "10px",
-          background: "black",
-          marginLeft: "120px",
-        }}
-      />
+      <div className={styles.hangman__noose} />
+      <div className={styles.hangman__gallows__right} />
+      <div className={styles.hangman__gallows__left} />
     </div>
   );
 };

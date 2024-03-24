@@ -9,7 +9,7 @@ gameStatusMiddleware.startListening({
   effect: async (action, listenerApi) => {
     const state = listenerApi.getState() as RootState;
     const isGameWon = state.game.charsToGuess.every((letter) => state.game.guessedLetters.includes(letter.toLowerCase()));
-    if (isGameWon || state.game.errors >= 7) {
+    if (isGameWon || state.game.errors >= 6) {
       listenerApi.dispatch(finishGame(isGameWon ? 'won' : 'lost'));
     }
   },
