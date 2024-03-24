@@ -4,7 +4,7 @@
   position: relative;
   max-width: 580px;
   height: 400px;
-  margin: 0.5rem 2rem 0.5rem 0;
+  margin: 0.5rem 0 0.5rem 0;
   flex-basis: 100%;
   padding: 40px;
 }
@@ -40,6 +40,7 @@
   .container {
     flex-grow: 1;
     flex-basis: 70%;
+    margin: 0.5rem 4rem 0.5rem 0;
   }
 
   .hangman__noose {
