@@ -1,7 +1,7 @@
 import { QuoteResponse } from "../types/types";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import styles from '../styles/Quote.module.css'
+import styles from "../styles/Quote.module.css";
 
 type Props = {
   data: QuoteResponse | null;
@@ -15,35 +15,33 @@ const Quote = ({ data, isLoading, error }: Props) => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.container}>
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <div className={styles.container}>
+        <p className={styles.container}>{error}</p>
+      </div>
+    );
   }
 
   return (
     <>
       {data && (
         <div className={styles.container}>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "flex-end",
-            }}
-          >
+          <div className={styles.quote__letters__container}>
             {data.content.split("").map((letter, index) => {
               const isLetter = /[a-zA-Z]/.test(letter); //check if character is letter so it can be hidden
               return (
                 <span
-                  style={{
-                    borderBottom: isLetter ? "2px solid black" : "none",
-                    marginLeft: "3px",
-                    display: "flex",
-                    width: "15px",
-                    height: "20px",
-                  }}
+                  className={
+                    isLetter ? styles.quote__char : styles.quote__not__char
+                  }
                   key={index}
                 >
                   {isLetter ? (

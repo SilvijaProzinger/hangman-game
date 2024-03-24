@@ -28,7 +28,6 @@ export const sendScore = createAsyncThunk(
         finalTime
       );
       console.log("FINAL SCORE", score);
-      console.log(highscoreUrl)
       dispatch(setFinalScore(score));
 
       // prepare data for POST request
@@ -46,8 +45,6 @@ export const sendScore = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
-      
-      console.log(response);
       return response.data;
     } catch (error) {
       throw error;

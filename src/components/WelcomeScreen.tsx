@@ -21,7 +21,7 @@ const WelcomeScreen = () => {
       <div className={styles.form__container}>
         <h1>Hang the wise man</h1>
         <p>
-          Welcome to Hang the wise man game! Please enter your name to continue
+          Welcome to Hang the wise man game! <br/> Please enter your name to continue
         </p>
         <form onSubmit={handleSubmit} className={styles.name__form}>
           <input

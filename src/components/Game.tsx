@@ -6,7 +6,7 @@ import {
   setQuoteId,
 } from "../store/slice/gameSlice";
 import { AppDispatch, RootState } from "../store/store";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../hooks/useGetRequest";
 import { QuoteResponse } from "../types/types";
 import { sendScore } from "../store/thunk/sendScore";
 import Quote from "./Quote";
@@ -23,19 +23,9 @@ const Game = () => {
   const dispatch = useDispatch<AppDispatch>();
   const status = useSelector((state: RootState) => state.game.status);
 
-  /*const charsToGuess = useSelector((state: RootState) => state.game.charsToGuess);
-  const errors = useSelector((state: RootState) => state.game.errors);
-  const guessedLetters = useSelector(
-    (state: RootState) => state.game.guessedLetters
-  );
-
-  //const isGameWon = charsToGuess.every((letter) => guessedLetters.includes(letter.toLowerCase()));*/
-
   //save fetched quote to state
   useEffect(() => {
     if (data) {
-      console.log("DATA", data);
-
       //trim empty spaces and special characters from quote
       const quoteLettersOnly = (data as QuoteResponse).content
         .replace(/[^a-zA-Z\s]/g, "")
@@ -51,16 +41,6 @@ const Game = () => {
       dispatch(sendScore());
     }
   }, [status, dispatch]);
-
-  //check if the game is won or lost
-  /*useEffect(() => {
-    console.log(isGameWon)
-    if (errors >= 7 || isGameWon) {
-      const result = isGameWon ? "won" : "lost";
-      dispatch(finishGame(result));
-      console.log(result);
-    }
-  }, [dispatch, errors, isGameWon]);*/
 
   const handleReset = () => {
     refetch();

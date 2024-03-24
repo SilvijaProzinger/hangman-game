@@ -5,6 +5,16 @@
   align-items: center;
 }
 
+.form__container {
+  & p {
+    font-size: 1.125rem;
+  }
+
+  & h1 {
+    font-size: 2.25rem;
+  }
+}
+
 .img__container {
   background: url("../../public/hangmanBg.png");
   background-size: cover;
@@ -63,5 +73,3 @@
     width: 550px;
   }
 }
-
-

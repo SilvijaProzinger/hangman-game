@@ -39,6 +39,8 @@ const gameSlice = createSlice({
       state.status = action.payload;
       state.finalTime = initialState.finalTime;
       state.finalScore = initialState.finalScore;
+      state.postResponse = initialState.postResponse;
+      state.postError = initialState.postError;
     },
     addName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;

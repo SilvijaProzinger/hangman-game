@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../hooks/useGetRequest";
 import { calculateScore } from "../utilities/calculateScore";
 import { formatTime } from "../utilities/timeFormatter";
 import {

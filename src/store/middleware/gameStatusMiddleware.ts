@@ -4,6 +4,7 @@ import { RootState } from '../store';
 
 const gameStatusMiddleware = createListenerMiddleware()
 
+// listen to the game so that when the player makes more than 6 errors or wins the game status is changed
 gameStatusMiddleware.startListening({
   actionCreator: addGuess,
   effect: async (action, listenerApi) => {
