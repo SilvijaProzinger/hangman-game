@@ -23,7 +23,7 @@ const Keyboard = () => {
           <button
             key={key}
             onClick={() => handleGuess(key)}
-            disabled={guessedLetters.includes(key) || status === "lost"}
+            disabled={guessedLetters.includes(key) || status === "lost" || status === 'won'}
           >
             {key.toUpperCase()}
           </button>
