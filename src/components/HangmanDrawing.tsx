@@ -8,7 +8,11 @@ const HangmanDrawing = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.hangman}>{drawing.slice(0, errors)}</div>
+      <div className={styles.hangman}>
+        {drawing.slice(0, errors).map((item, index) => (
+          <div key={index}>{item}</div>
+        ))}
+      </div>
       <div className={styles.hangman__noose} />
       <div className={styles.hangman__gallows__right} />
       <div className={styles.hangman__gallows__left} />

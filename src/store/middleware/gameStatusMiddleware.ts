@@ -1,19 +1,22 @@
-import { addGuess, finishGame } from '../slice/gameSlice';
-import { createListenerMiddleware } from '@reduxjs/toolkit';
-import { RootState } from '../store';
+import { addGuess, finishGame } from "../slice/gameSlice";
+import { createListenerMiddleware } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
-const gameStatusMiddleware = createListenerMiddleware()
+const gameStatusMiddleware = createListenerMiddleware();
 
-// listen to the game so that when the player makes more than 6 errors or wins the game status is changed
+// create a listener middleware so that the game status state gets updated when the player makes more than 6 errors or wins the game
 gameStatusMiddleware.startListening({
   actionCreator: addGuess,
-  effect: async (action, listenerApi) => {
+  effect: (action, listenerApi) => {
     const state = listenerApi.getState() as RootState;
-    const isGameWon = state.game.charsToGuess.every((letter) => state.game.guessedLetters.includes(letter.toLowerCase()));
-    if (isGameWon || state.game.errors >= 6) {
-      listenerApi.dispatch(finishGame(isGameWon ? 'won' : 'lost'));
+    const isGameLost = state.game.errors >= 6;
+    const isGameWon = state.game.charsToGuess.every((letter) =>
+      state.game.guessedLetters.includes(letter.toLowerCase())
+    );
+    if (isGameWon || isGameLost) {
+      listenerApi.dispatch(finishGame(isGameWon ? "won" : "lost"));
     }
   },
-})
+});
 
-export default gameStatusMiddleware
+export default gameStatusMiddleware;

@@ -21,13 +21,18 @@ const useFetch = (url: string) => {
   }, [error, url]);
 
   useEffect(() => {
-    //add ref to stop useEffect from running twice in a row in strict mode
+    // add ref to stop useEffect from running twice in a row in strict mode
     if (!isInitalized.current) {
       fetchData();
       isInitalized.current = true;
     }
   }, [url, fetchData, error]);
-return { data, error, isLoading, refetch: fetchData /* expose refetch to call the fetchData again*/ };
+  return {
+    data,
+    error,
+    isLoading,
+    refetch: fetchData // expose refetch to call the fetchData again,
+  };
 };
 
 export default useFetch;

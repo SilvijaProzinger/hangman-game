@@ -27,7 +27,6 @@ export const sendScore = createAsyncThunk(
         errors,
         finalTime
       );
-      console.log("FINAL SCORE", score);
       dispatch(setFinalScore(score));
 
       // prepare data for POST request

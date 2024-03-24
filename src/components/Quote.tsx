@@ -16,7 +16,7 @@ const Quote = ({ data, isLoading, error }: Props) => {
 
   if (isLoading) {
     return (
-      <div className={styles.container}>
+      <div className={styles.loading}>
         <p>Loading...</p>
       </div>
     );
@@ -24,8 +24,8 @@ const Quote = ({ data, isLoading, error }: Props) => {
 
   if (error) {
     return (
-      <div className={styles.container}>
-        <p className={styles.container}>{error}</p>
+      <div className={styles.error}>
+        <p>{error}</p>
       </div>
     );
   }

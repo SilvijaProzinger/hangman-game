@@ -13,7 +13,7 @@ const PlayerResult = () => {
   );
   const playerLost = (
     <p>
-      <strong>You lost!</strong> Click restart game to play again.
+      <strong>You lost!</strong> Restart the game to play again.
     </p>
   );
   return <> {status === "won" ? playerWon : playerLost}</>;

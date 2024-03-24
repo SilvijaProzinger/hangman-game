@@ -17,13 +17,13 @@
 
 .img__container {
   background: url("../../public/hangmanBg.png");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 93%;
-  height: 450px;
+  width: 100%;
 }
 
 .name__form {
@@ -60,7 +60,7 @@
   }
 
   .form__container {
-    margin-right: 2rem;
+    margin-right: 2.2rem;
   }
 
   .name__form {
