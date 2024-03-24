@@ -56,8 +56,8 @@ const HighScoreTable = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Highscore table</h1>
-      <p>See other players' highscores.</p>
+      <h1>High score table</h1>
+      <p>See other players' high scores.</p>
       <table>
         <thead>
           <tr>
