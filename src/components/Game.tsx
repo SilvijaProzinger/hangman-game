@@ -15,6 +15,7 @@ import Keyboard from "./Keyboard";
 import PlayerStatus from "./PlayerStatus";
 import HangmanDrawing from "./HangmanDrawing";
 import styles from "../styles/Game.module.css";
+import ConfettiExplosion from 'react-confetti-explosion';
 
 const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 
@@ -22,6 +23,8 @@ const Game = () => {
   const { data, isLoading, error, refetch } = useFetch(quoteUrl);
   const dispatch = useDispatch<AppDispatch>();
   const status = useSelector((state: RootState) => state.game.status);
+
+  const [isExploding, setIsExploding] = useState(false);
 
   //save fetched quote to state
   useEffect(() => {
@@ -39,6 +42,7 @@ const Game = () => {
   useEffect(() => {
     if (status === "won") {
       dispatch(sendScore());
+      setIsExploding(true)
     }
   }, [status, dispatch]);
 
@@ -49,6 +53,7 @@ const Game = () => {
 
   return (
     <div>
+      {isExploding && <ConfettiExplosion onComplete={() => setIsExploding(false)}/>}
       <Header />
       <div className={styles.game__container}>
         <HangmanDrawing />

@@ -7,8 +7,8 @@ const PlayerResult = () => {
 
   const playerWon = (
     <p>
-      <strong>You won!</strong>
-      <Link to="/highscores"> Click here to view the high score table</Link>
+      <strong>You won! </strong>
+      <Link to="/highscores">Click here to view the high score table</Link>
     </p>
   );
   const playerLost = (

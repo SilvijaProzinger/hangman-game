@@ -71,3 +71,6 @@ a {
   }
 }
 
+div[class^="confetti-explosion-screen"] > div {
+  left: 50% !important;
+}
