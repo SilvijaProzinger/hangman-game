@@ -13,7 +13,8 @@
   justify-content: center;
 }
 
-.loading p {
+.loading p,
+.error p {
   font-size: 1.4rem;
 }
 
