@@ -13,12 +13,12 @@ const useGetRequest = (url: string) => {
     try {
       const response = await axios.get(url);
       setData(response.data);
-    } catch {
+    } catch (error) {
       console.log(error);
-      setError(error);
+      setError('There has been an error. Please restart the game or refresh the page.');
     }
     setIsLoading(false);
-  }, [error, url]);
+  }, [url]);
 
   useEffect(() => {
     // add ref to stop useEffect from running twice in a row in strict mode
