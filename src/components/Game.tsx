@@ -6,7 +6,7 @@ import {
   setQuoteId,
 } from "../store/slice/gameSlice";
 import { AppDispatch, RootState } from "../store/store";
-import useFetch from "../hooks/useGetRequest";
+import useGetRequest from "../hooks/useGetRequest";
 import { QuoteResponse } from "../types/types";
 import { sendScore } from "../store/thunk/sendScore";
 import Quote from "./Quote";
@@ -20,7 +20,7 @@ import ConfettiExplosion from 'react-confetti-explosion';
 const quoteUrl = process.env.REACT_APP_QUOTE_API_URL ?? "";
 
 const Game = () => {
-  const { data, isLoading, error, refetch } = useFetch(quoteUrl);
+  const { data, isLoading, error, refetch } = useGetRequest(quoteUrl);
   const dispatch = useDispatch<AppDispatch>();
   const status = useSelector((state: RootState) => state.game.status);
 

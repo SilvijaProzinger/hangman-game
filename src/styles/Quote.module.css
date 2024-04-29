@@ -7,6 +7,14 @@
 .error {
   flex-basis: 100%;
   text-align: center;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading p {
+  font-size: 1.4rem;
 }
 
 .quote__letters__container {

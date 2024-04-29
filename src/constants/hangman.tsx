@@ -4,10 +4,10 @@ const HEAD = (
       width: "50px",
       height: "50px",
       borderRadius: "100%",
-      border: "10px solid black",
+      border: "5px solid black",
       position: "absolute",
       top: "50px",
-      right: "-30px",
+      right: "-26px",
     }}
   />
 );
@@ -15,11 +15,11 @@ const HEAD = (
 const BODY = (
   <div
     style={{
-      width: "10px",
+      width: "5px",
       height: "100px",
       background: "black",
       position: "absolute",
-      top: "120px",
+      top: "110px",
       right: 0,
     }}
   />
@@ -29,7 +29,7 @@ const RIGHT_ARM = (
   <div
     style={{
       width: "100px",
-      height: "10px",
+      height: "5px",
       background: "black",
       position: "absolute",
       top: "150px",
@@ -44,11 +44,11 @@ const LEFT_ARM = (
   <div
     style={{
       width: "100px",
-      height: "10px",
+      height: "5px",
       background: "black",
       position: "absolute",
       top: "150px",
-      right: "10px",
+      right: "5px",
       rotate: "30deg",
       transformOrigin: "right bottom",
     }}
@@ -59,11 +59,11 @@ const RIGHT_LEG = (
   <div
     style={{
       width: "100px",
-      height: "10px",
+      height: "5px",
       background: "black",
       position: "absolute",
-      top: "210px",
-      right: "-90px",
+      top: "204px",
+      right: "-95px",
       rotate: "60deg",
       transformOrigin: "left bottom",
     }}
@@ -74,10 +74,10 @@ const LEFT_LEG = (
   <div
     style={{
       width: "100px",
-      height: "10px",
+      height: "5px",
       background: "black",
       position: "absolute",
-      top: "210px",
+      top: "204px",
       right: 0,
       rotate: "-60deg",
       transformOrigin: "right bottom",

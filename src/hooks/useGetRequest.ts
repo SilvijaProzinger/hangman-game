@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import axios from "axios";
 import { Response } from "../types/types";
 
-const useFetch = (url: string) => {
+const useGetRequest = (url: string) => {
   const [data, setData] = useState<Response | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,4 +35,4 @@ const useFetch = (url: string) => {
   };
 };
 
-export default useFetch;
+export default useGetRequest;
