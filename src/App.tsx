@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
-import { useEffect } from "react";
 import Game from "./components/Game";
 import WelcomeScreen from "./components/WelcomeScreen";
 import HighScoreTable from "./components/HighScoreTable";

@@ -11,24 +11,23 @@ const highscoreUrl = process.env.REACT_APP_HIGHSCORE_API_URL ?? "";
 export const sendScore = createAsyncThunk(
   "game/sendScore",
   async (_, { getState, dispatch }) => {
+    // call the helper function to calculate the score
+    const {
+      quote,
+      quoteId,
+      charsToGuess,
+      name,
+      errors,
+      finalTime,
+    } = (getState() as RootState).game;
+    const score = calculateScore(
+      quote.length,
+      charsToGuess.length,
+      errors,
+      finalTime
+    );
+    dispatch(setFinalScore(score));
     try {
-      // call the helper function to calculate the score
-      const {
-        quote,
-        quoteId,
-        charsToGuess,
-        name,
-        errors,
-        finalTime,
-      } = (getState() as RootState).game;
-      const score = calculateScore(
-        quote.length,
-        charsToGuess.length,
-        errors,
-        finalTime
-      );
-      dispatch(setFinalScore(score));
-
       // prepare data for POST request
       const postData: GamePostData = {
         quoteId,

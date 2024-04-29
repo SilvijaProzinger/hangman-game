@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addName } from "../store/slice/gameSlice";
 import styles from "../styles/WelcomeScreen.module.css";
 
 const WelcomeScreen = () => {
   const [name, setName] = useState("");
+  const [showIllustration, setShowIllustration] = useState(false);
   const dispatch = useDispatch();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,6 +16,10 @@ const WelcomeScreen = () => {
     e.preventDefault();
     dispatch(addName(name));
   };
+
+  useEffect(() => {
+    setShowIllustration(true)
+  },[])
 
   return (
     <div className={styles.container}>
@@ -38,7 +43,7 @@ const WelcomeScreen = () => {
           src="./hangman.jpg"
           alt=""
           width={250}
-          className={styles.hangman__vector}
+          className={`${styles.hangman__vector} ${showIllustration ? styles.visible : ''}`}
         />
       </div>
     </div>

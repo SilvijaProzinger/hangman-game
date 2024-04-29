@@ -40,6 +40,13 @@
 
 .hangman__vector {
   mix-blend-mode: multiply;
+  opacity: 0; 
+  transition: opacity .7s ease-in-out; 
+  transition-delay: .7s;
+}
+
+.hangman__vector.visible {
+  opacity: 1;
 }
 
 @media (min-width: 35rem) {
@@ -74,3 +81,4 @@
     margin-top: 0;
   }
 }
+
