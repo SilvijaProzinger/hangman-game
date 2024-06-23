@@ -3,7 +3,7 @@
 This is Hang the wise man, a clone of popular hangman game. The goal of this game is to guess a quote by a famous person as soon as possible with least possible errors, or else the player gets "hanged". This web app was created with React using `create-react-app`, `axios` for HTTP requests, and `redux toolkit` for state management. 
 
 ### GIF preview:
-![](https://github.com/SilvijaProzinger/hangman-game/public/gif-preview.gif)
+![](https://github.com/SilvijaProzinger/hangman-game/blob/main/public/gif-preview.gif)
 
 ## Rules
 
